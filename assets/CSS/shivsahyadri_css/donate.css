@@ -1,0 +1,491 @@
+/* ==========================================================================
+   1. GLOBAL RESET & PREMIUM VARIABLES
+   ========================================================================== */
+:root {
+  --primary-gold: #ff8c00;
+  --primary-dark: #1a1510;
+  --bg-light: #fdfbf7;
+  --bg-card: #fdf4e7;
+  --text-dark: #2c251e;
+  --text-muted: #6e655c;
+  --white: #ffffff;
+  --shadow-premium: 0 20px 40px rgba(26, 21, 16, 0.06);
+  --shadow-hover: 0 30px 60px rgba(255, 140, 0, 0.15);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body.hidden {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. PREMIUM HEADER & BALANCED ACTION SYSTEM
+   ========================================================================== */
+header {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(44, 37, 30, 0.08);
+}
+
+.head-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  width: auto;
+  height: 75px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
+}
+
+.logo h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Centers the navigation links exactly like the batch files */
+.menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.menu ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.menu ul li a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 30px;
+  transition: var(--transition-smooth);
+}
+
+.menu ul li a:hover {
+  color: var(--primary-gold);
+  background-color: rgba(255, 140, 0, 0.08);
+  font-weight: 600;
+}
+
+/* Premium Button Architecture */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-primary {
+  background-color: var(--primary-gold);
+  color: var(--white) !important;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(255, 140, 0, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid rgba(44, 37, 30, 0.15);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-dark);
+  background-color: rgba(44, 37, 30, 0.03);
+}
+
+/* HAMBURGER RIG (Synced with batch sizing metrics) */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   3. MOBILE DRAWER NAVIGATION (ASIDE)
+   ========================================================================== */
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--primary-dark);
+  color: var(--white);
+  padding: 40px 30px;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: var(--transition-smooth);
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.3);
+}
+
+aside.open {
+  transform: translateX(0);
+}
+
+aside .close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+aside .close:hover {
+  color: var(--primary-gold);
+}
+
+aside nav ul {
+  list-style: none;
+  margin-top: 60px;
+}
+
+aside nav ul a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+aside nav ul a:hover {
+  color: var(--primary-gold);
+  padding-left: 5px;
+}
+
+.btn2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.btn-mobile-primary,
+.btn-mobile-secondary {
+  text-align: center;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.btn-mobile-primary {
+  background-color: var(--primary-gold);
+  color: var(--white);
+}
+
+.btn-mobile-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   4. DONATION INTERMEDIATE VIEWPORT WRAPPER
+   ========================================================================== */
+section {
+  padding: 80px 0;
+  background-color: #fdfbf7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Beautiful card container leveraging your signature vintage gold styling */
+section .fluid-container {
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #fdf4e7;
+  border: 1px solid rgba(255, 140, 0, 0.15);
+  border-radius: 24px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(26, 21, 16, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section .fluid-container:hover {
+  border-color: var(--primary-gold);
+  box-shadow: var(--shadow-hover);
+}
+
+.upi {
+  margin-bottom: 25px;
+}
+
+.upi img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.tex {
+  margin-bottom: 35px;
+}
+
+.tex h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.tex h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.3;
+  margin-top: 12px;
+}
+
+/* Modern polaroid border wrap around QR Code layout */
+.donation {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  display: inline-block;
+  margin: 0 auto 35px auto;
+  box-shadow: 0 10px 25px rgba(26, 21, 16, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.donation:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(255, 140, 0, 0.12);
+}
+
+.donation img {
+  width: 240px;
+  height: 240px;
+  display: block;
+  object-fit: contain;
+}
+
+.upi-id {
+  border-top: 1px dashed rgba(44, 37, 30, 0.15);
+  padding-top: 30px;
+  width: 100%;
+}
+
+.upi-id h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.upi-id h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  letter-spacing: 0.5px;
+  background-color: rgba(255, 140, 0, 0.06);
+  padding: 12px 28px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-top: 12px;
+  border: 1px dashed rgba(255, 140, 0, 0.25);
+}
+
+/* ==========================================================================
+   5. PREMIUM FOOTER DESIGN
+   ========================================================================== */
+footer {
+  background-color: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 60px 0 40px 0;
+}
+
+.footer-container {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.llogo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  height: 80px;
+  width: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+.llogo h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--white);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  max-width: 450px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.lnavigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.lnavigation nav a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.lnavigation nav a:hover {
+  color: var(--primary-gold);
+}
+
+#dev i {
+  margin-right: 5px;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 30px;
+}
+
+.reserved {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE BREAKDOWN (SYNCED HARSH MEDIA QUERIES REDIRECTS)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* CRITICAL FIXED HEADER CONFIGURATION OVERRIDES */
+  .menu, 
+  .head-container .btn {
+    display: none !important; /* Hides desktop blocks cleanly */
+  }
+
+  .hamburger {
+    display: block !important; /* Restores mobile trigger toggle icon */
+    color: #2c251e !important;
+  }
+
+  header {
+    max-width: 90%;
+    padding: 15px 0;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .logo h3 {
+    font-size: 1rem;
+  }
+
+  /* DONATION SECTION ADJUSTMENTS */
+  section {
+    padding: 50px 0;
+  }
+
+  section .fluid-container {
+    padding: 35px 20px;
+    border-radius: 20px;
+  }
+
+  .tex h2 {
+    font-size: 1rem;
+  }
+
+  .tex h1 {
+    font-size: 1.7rem;
+  }
+
+  .donation img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .upi-id h1 {
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    width: 100%;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h3 {
+    font-size: 0.85rem;
+  }
+  
+  .tex h1 {
+    font-size: 1.4rem;
+  }
+}

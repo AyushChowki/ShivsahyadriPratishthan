@@ -1,0 +1,566 @@
+/* ==========================================================================
+   1. GLOBAL RESET & CONFIGURATIONS
+   ========================================================================== */
+:root {
+  --primary-gold: #ff8c00;
+  --primary-dark: #1a1510;
+  --bg-light: #fdfbf7;
+  --bg-card: #fdf4e7;
+  --text-dark: #2c251e;
+  --text-muted: #6e655c;
+  --white: #ffffff;
+  --shadow-premium: 0 20px 40px rgba(26, 21, 16, 0.06);
+  --shadow-hover: 0 30px 60px rgba(255, 140, 0, 0.15);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body.hidden {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. PREMIUM HEADER & NAVIGATION SYSTEM
+   ========================================================================== */
+header {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(44, 37, 30, 0.08);
+}
+
+.head-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  width: auto;
+  height: 75px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
+}
+
+.logo h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Home Link Premium Capsule Design */
+.menu ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.menu a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 30px;
+  transition: var(--transition-smooth);
+}
+
+.menu nav a:hover {
+  color: var(--primary-gold);
+  background-color: rgba(255, 140, 0, 0.08);
+  font-weight: 600;
+}
+.menu ul li a:hover {
+  color: var(--primary-gold);
+  background-color: rgba(255, 140, 0, 0.08);
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-primary {
+  background-color: var(--primary-gold);
+  color: var(--white) !important;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(255, 140, 0, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid rgba(44, 37, 30, 0.15);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-dark);
+  background-color: rgba(44, 37, 30, 0.03);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. MOBILE ASIDE SIDEBAR
+   ========================================================================== */
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--primary-dark);
+  color: var(--white);
+  padding: 40px 30px;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: var(--transition-smooth);
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.3);
+}
+
+aside.open {
+  transform: translateX(0);
+}
+
+aside .close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+aside .close:hover {
+  color: var(--primary-gold);
+}
+
+aside nav ul {
+  list-style: none;
+  margin-top: 60px;
+}
+
+aside nav ul a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+aside nav ul a:hover {
+  color: var(--primary-gold);
+  padding-left: 5px;
+}
+
+.btn2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.btn-mobile-primary,
+.btn-mobile-secondary {
+  text-align: center;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.btn-mobile-primary {
+  background-color: var(--primary-gold);
+  color: var(--white);
+}
+
+.btn-mobile-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+/* ==========================================================================
+   MAIN CONTENT WRAPPER & HEADING
+   ========================================================================== */
+.mid {
+  padding: 80px 0;
+  background-color: #fdfbf7; /* Premium off-white linen tone */
+}
+
+.fluid-container {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.heading p {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1a1510;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+/* Subtle underlying gold accent under main page heading */
+.heading p::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #ff8c00;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   PREMIUM EDITORIAL BATCH CONTAINERS
+   ========================================================================== */
+.container1, .container2, .container3 {
+  background-color: #fdf4e7; /* Your elegant vintage tint */
+  border: 1px solid rgba(255, 140, 0, 0.15); /* Cleaned up harsh thick lines to crisp modern micro-borders */
+  border-radius: 24px;
+  margin-bottom: 60px;
+  padding: 50px;
+  box-shadow: 0 15px 35px rgba(26, 21, 16, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.container1:hover, .container2:hover, .container3:hover {
+  border-color: #ff8c00;
+  box-shadow: 0 30px 60px rgba(255, 140, 0, 0.08);
+}
+
+/* Luxury Block Typography Settings */
+.first p, .second p, .third p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.2rem;
+  line-height: 1.45;
+  color: #1a1510;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 45px auto;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   HIGH-END POLAROID COLLAGE IMAGE GRID
+   ========================================================================== */
+.first-img, .second-img, .third-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px; /* Perfect, breathing gallery margins */
+  margin-top: 20px;
+}
+
+/* Polaroids Reimagined with Modern Shadow Matrix */
+.first-img img, .second-img img, .third-img img {
+  background-color: #ffffff;
+  padding: 12px 12px 30px 12px; /* Bottom heavy spacing mimicking real premium photography prints */
+  height: 260px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px rgba(26, 21, 16, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Organic Editorial Rotation Effect */
+.first-img img:nth-child(even), 
+.second-img img:nth-child(even), 
+.third-img img:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.first-img img:nth-child(odd), 
+.second-img img:nth-child(odd), 
+.third-img img:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+
+/* Fluid Hover Focus Transitions */
+.first-img img:hover, .second-img img:hover, .third-img img:hover {
+  transform: scale(1.08) rotate(0deg) translateY(-10px);
+  box-shadow: 0 25px 45px rgba(255, 140, 0, 0.2);
+  z-index: 10;
+}
+
+/* ==========================================================================
+   CROSS-NAVIGATION LINK PANELS (OTHER BATCHES)
+   ========================================================================== */
+.other {
+  text-align: center;
+  margin: 80px 0 30px 0;
+}
+
+.other h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #1a1510;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.more {
+  padding-bottom: 40px;
+}
+
+.vijay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+/* Elegant Showcase Framing for Alternative Years */
+.vijay a {
+  display: inline-block;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vijay img {
+  height: 200px;
+  width: auto;
+  display: block;
+  object-fit: cover;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interaction Controls for Year Overviews */
+.vijay a:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 140, 0, 0.18);
+}
+
+.vijay a:hover img {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   UPDATED RESPONSIVE BREAKDOWN (FIXED HAMBURGER VISIBILITY)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* CRITICAL NAVIGATION OVERRIDES */
+  .menu, 
+  .head-container .btn {
+    display: none !important; /* Hides desktop links and buttons completely */
+  }
+
+  .hamburger {
+    display: block !important; /* Forces the mobile hamburger menu icon to show up */
+    color: #2c251e !important; /* Ensures the color matches your typography tokens */
+  }
+
+  header {
+    max-width: 90%;
+    padding: 15px 0;
+  }
+
+  .logo img {
+    height: 60px; /* Scales brand badge down to make room on compact screens */
+  }
+
+  .logo h3 {
+    font-size: 1rem;
+  }
+
+  /* PHOTO WALL RESPONSIVE CODES */
+  .heading p {
+    font-size: 2.2rem;
+  }
+  
+  .container1, .container2, .container3 {
+    padding: 25px 15px;
+    border-radius: 16px;
+    margin: 30px 0;
+  }
+  
+  .first p, .second p, .third p {
+    font-size: 1.3rem;
+    padding: 0;
+    margin-bottom: 25px;
+  }
+  
+  .first-img, .second-img, .third-img {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+  }
+  
+  .first-img img, .second-img img, .third-img img {
+    width: 100% !important;
+    height: 160px !important;
+    object-fit: cover !important;
+    padding: 8px 8px 20px 8px;
+    margin: 0 !important;
+    transform: none !important;
+  }
+  
+  .vijay {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .vijay a {
+    width: 100%;
+  }
+  
+  .vijay img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading p {
+    font-size: 1.8rem;
+  }
+  
+  .logo h3 {
+    font-size: 0.85rem; /* Prevents text wrap overflow on very small devices */
+  }
+
+  .first-img, .second-img, .third-img {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .first-img img, .second-img img, .third-img img {
+    height: 220px !important;
+  }
+}
+/* ==========================================================================
+   5. PREMIUM FOOTER
+   ========================================================================== */
+footer {
+  background-color: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 60px 0 40px 0;
+}
+
+.footer-container {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.llogo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  height: 80px;
+  width: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+.llogo h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--white);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.lnavigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.lnavigation nav a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.lnavigation nav a:hover {
+  color: var(--primary-gold);
+}
+
+#dev i {
+  margin-right: 5px;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 30px;
+}
+
+.reserved {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
